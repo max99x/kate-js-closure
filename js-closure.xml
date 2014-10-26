@@ -291,6 +291,7 @@
       </context>
       <context name="JsDoc Param Type Start" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
         <DetectSpaces/>
+        <DetectChar attribute="Comment" context="#stay" char="*"/>
         <DetectChar attribute="Comment" context="JsDoc Param Type" char="{"/>
       </context>
       <context name="JsDoc Param Type" attribute="Comment" lineEndContext="#stay">
@@ -302,6 +303,7 @@
       </context>
       <context name="JsDoc Param Name" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
         <DetectSpaces/>
+        <DetectChar attribute="Comment" context="#stay" char="*"/>
         <RegExpr attribute="JsDoc Param" context="#pop#pop" String="&ident;"/>
       </context>
       <!-- Comments. -->
