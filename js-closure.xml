@@ -215,7 +215,7 @@
         <!-- "function" keyword, followed by an optional name and a required params list. -->
         <RegExpr attribute="Function" context="Function" String="function\b"/>
         <!-- Class identifiers. -->
-        <RegExpr attribute="Class" context="#stay" String="&path;(?=\s*\.prototype\b)"/>
+        <RegExpr attribute="Class" context="Property" String="&path;(?=\s*\.prototype\b)"/>
         <!-- Closure stuff. -->
         <RegExpr attribute="Closure Compiler Directives" context="Closure"
                  String="goog\s*\.\s*(?:base|define|abstractMethod|scope|setTestOnly|provide|require|forwardDeclare|exportSymbol|exportProperty)\b"/>
@@ -257,6 +257,14 @@
       <context name="Accessor" attribute="Accessor" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
         <DetectSpaces/>
         <RegExpr attribute="Method Accessor" context="#pop" String="&ident;(?=\s*\()"/>
+        <RegExpr attribute="Property Accessor" context="#pop" String="&ident;"/>
+      </context>
+      <!-- Property definition. -->
+      <context name="Property" attribute="Accessor" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
+        <DetectSpaces/>
+        <DetectChar attribute="Symbol" context="#stay" char="."/>
+        <RegExpr attribute="Accessor" context="#stay" String="prototype\b"/>
+        <RegExpr attribute="Method Accessor" context="#pop" String="&ident;(?=\s*=\s*function\b)"/>
         <RegExpr attribute="Property Accessor" context="#pop" String="&ident;"/>
       </context>
       <!-- Function declaration. -->
