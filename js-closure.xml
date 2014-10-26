@@ -25,6 +25,7 @@
     </list>
     <!-- Generic keywords. -->
     <list name="keywords">
+      <item>arguments</item>
       <item>break</item>
       <item>case</item>
       <item>catch</item>
