@@ -286,7 +286,7 @@
         <DetectSpaces/>
         <DetectChar attribute="Comment" context="JsDoc Type" char="{"/>
         <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
-        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;]"/>
+        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;*]"/>
         <DetectChar attribute="Comment" context="#pop" char="}"/>
       </context>
       <context name="JsDoc Param Type Start" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
@@ -298,7 +298,7 @@
         <DetectSpaces/>
         <DetectChar attribute="Comment" context="JsDoc Param Type" char="{"/>
         <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
-        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;]"/>
+        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;*]"/>
         <DetectChar attribute="Comment" context="JsDoc Param Name" char="}"/>
       </context>
       <context name="JsDoc Param Name" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
