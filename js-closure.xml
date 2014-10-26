@@ -264,7 +264,7 @@
         <DetectSpaces/>
         <DetectChar attribute="Symbol" context="#stay" char="."/>
         <RegExpr attribute="Accessor" context="#stay" String="prototype\b"/>
-        <RegExpr attribute="Method Accessor" context="#pop" String="&ident;(?=\s*=\s*function\b)"/>
+        <RegExpr attribute="Method Accessor" context="#pop" String="&ident;(?=\s*=\s*(?:function|goog\.abstractMethod)\b)"/>
         <RegExpr attribute="Property Accessor" context="#pop" String="&ident;"/>
       </context>
       <!-- Function declaration. -->
