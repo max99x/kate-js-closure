@@ -193,7 +193,7 @@
     </list>
     <contexts>
       <!-- Generic code. -->
-      <context name="Normal" attribute="Normal" lineEndContext="#stay" fallthroughContext="Normal After Period" fallthrough="true">
+      <context name="Normal" attribute="Normal" lineEndContext="#stay">
         <DetectSpaces/>
         <!-- Numbers. -->
         <HlCHex attribute="Hex" context="#stay"/>
@@ -236,6 +236,8 @@
         <DetectChar attribute="Symbol" char="{" beginRegion="Brace" context="#stay" />
         <DetectChar attribute="Symbol" char="}" endRegion="Brace" context="#stay" />
         <DetectChar attribute="Symbol" context="Normal After Period" char="."/>
+        <AnyChar attribute="Error" context="#stay" String="#@`"/>
+        <IncludeRules context="Normal After Period" />
       </context>
       <context name="Normal After Period" attribute="Normal" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
         <DetectSpaces/>
@@ -369,6 +371,7 @@
       <itemData name="Class" defStyleNum="dsDataType" spellChecking="false" bold="1"/>
       <itemData name="Regex" defStyleNum="dsString" spellChecking="false"/>
       <itemData name="Reserved" defStyleNum="dsAlert" spellChecking="false"/>
+      <itemData name="Error" defStyleNum="dsAlert" spellChecking="false"/>
       <itemData name="Value Keywords" defStyleNum="dsOthers" spellChecking="false"/>
       <itemData name="Globals" defStyleNum="dsOthers" spellChecking="false"/>
       <!-- Context-sensitive globals - not styled by default. -->
