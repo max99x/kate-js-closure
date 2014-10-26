@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd"
+ [ <!ENTITY ident "[_$a-zA-Z][$\w]*">
+   <!ENTITY path "&ident;(?:\s*\.\s*&ident;)*"> ]>
+
+<language name="JavaScript-Closure"
+          version="1.0"
+          kateversion="2.4"
+          section="Scripts"
+          extensions="*.js"
+          mimetype="text/x-javascript;application/x-javascript"
+          indenter="cstyle"
+          casesensitive="1"
+          author="Max Shawabkeh (max99x@gmail.com)"
+          license="MIT">
+  <highlighting>
+    <!-- Built-in constants. -->
+    <list name="value_keywords">
+      <item>false</item>
+      <item>true</item>
+      <item>undefined</item>
+      <item>null</item>
+      <item>NaN</item>
+      <item>Infinity</item>
+    </list>
+    <!-- Generic keywords. -->
+    <list name="keywords">
+      <item>break</item>
+      <item>case</item>
+      <item>catch</item>
+      <item>continue</item>
+      <item>debugger</item>
+      <item>default</item>
+      <item>delete</item>
+      <item>do</item>
+      <item>else</item>
+      <item>finally</item>
+      <item>for</item>
+      <item>if</item>
+      <item>in</item>
+      <item>return</item>
+      <item>switch</item>
+      <item>throw</item>
+      <item>try</item>
+      <item>typeof</item>
+      <item>var</item>
+      <item>void</item>
+      <item>while</item>
+   </list>
+    <!-- Keywords which are always followed by a class name. -->
+    <list name="class_keywords">
+      <item>new</item>
+      <item>instanceof</item>
+    </list>
+    <!-- Reserved words. -->
+    <list name="reserved">
+      <item>with</item>
+      <item>const</item>
+      <item>class</item>
+      <item>enum</item>
+      <item>export</item>
+      <item>extends</item>
+      <item>import</item>
+      <item>super</item>
+      <item>implements</item>
+      <item>interface</item>
+      <item>let</item>
+      <item>package</item>
+      <item>private</item>
+      <item>protected</item>
+      <item>public</item>
+      <item>static</item>
+      <item>yield</item>
+    </list>
+    <!-- Built-in globals provided in most contexts. -->
+    <list name="globals">
+      <item>Object</item>
+      <item>Number</item>
+      <item>Boolean</item>
+      <item>Array</item>
+      <item>String</item>
+      <item>RegExp</item>
+      <item>Function</item>
+      <item>Date</item>
+      <item>Math</item>
+      <item>eval</item>
+      <item>setInterval</item>
+      <item>clearInterval</item>
+      <item>setTimeout</item>
+      <item>clearTimeout</item>
+      <item>isFinite</item>
+      <item>isNaN</item>
+      <item>parseFloat</item>
+      <item>parseInt</item>
+      <item>escape</item>
+      <item>unescape</item>
+      <item>console</item>
+      <item>encodeURI</item>
+      <item>encodeURIComponent</item>
+      <item>decodeURI</item>
+      <item>decodeURIComponent</item>
+    </list>
+    <!-- Built-in globals provided in browser context. -->
+    <list name="browser_globals">
+      <item>window</item>
+      <item>document</item>
+      <item>navigator</item>
+      <item>location</item>
+      <item>history</item>
+      <item>screen</item>
+      <item>alert</item>
+      <item>prompt</item>
+      <item>Worker</item>
+    </list>
+    <!-- Built-in globals provided in Node.js context. -->
+    <list name="nodejs_globals">
+      <item>process</item>
+      <item>GLOBAL</item>
+      <item>require</item>
+      <item>exports</item>
+    </list>
+    <!-- Common closure namespaces. -->
+    <list name="closure_namespaces">
+      <item>string</item>
+      <item>array</item>
+      <item>object</item>
+      <item>events</item>
+      <item>dom</item>
+      <item>style</item>
+      <item>functions</item>
+      <item>async</item>
+      <item>ui</item>
+    </list>
+    <!-- Common closure methods. -->
+    <list name="closure_funcs">
+      <item>isDef</item>
+      <item>isDefAndNotNull</item>
+      <item>isNull</item>
+      <item>isString</item>
+      <item>isArray</item>
+      <item>isArrayLike</item>
+      <item>isBoolean</item>
+      <item>isNumber</item>
+      <item>isObject</item>
+      <item>isFunction</item>
+      <item>dispose</item>
+      <item>disposeAll</item>
+      <item>bind</item>
+      <item>partial</item>
+      <item>memoize</item>
+    </list>
+    <!-- JsDoc tags with no arguments or non-type arguments. -->
+    <list name="jsdoc_tag_argless">
+      <item>@code</item>
+      <item>@author</item>
+      <item>@constructor</item>
+      <item>@deprecated</item>
+      <item>@dict</item>
+      <item>@export</item>
+      <item>@expose</item>
+      <item>@externs</item>
+      <item>@fileoverview</item>
+      <item>@inheritDoc</item>
+      <item>@interface</item>
+      <item>@lends</item>
+      <item>@license</item>
+      <item>@link</item>
+      <item>@preserve</item>
+      <item>@noalias</item>
+      <item>@nocompile</item>
+      <item>@nosideeffects</item>
+      <item>@override</item>
+      <item>@see</item>
+      <item>@struct</item>
+      <item>@supported</item>
+      <item>@suppress</item>
+      <item>@template</item>
+    </list>
+    <!-- JsDoc tags with a type argument. -->
+    <list name="jsdoc_tag_arg">
+      <item>@const</item>
+      <item>@define</item>
+      <item>@enum</item>
+      <item>@extends</item>
+      <item>@implements</item>
+      <item>@private</item>
+      <item>@protected</item>
+      <item>@public</item>
+      <item>@return</item>
+      <item>@this</item>
+      <item>@type</item>
+      <item>@typedef</item>
+    </list>
+    <contexts>
+      <!-- Generic code. -->
+      <context name="Normal" attribute="Normal" lineEndContext="#stay" fallthroughContext="Normal After Period" fallthrough="true">
+        <DetectSpaces/>
+        <!-- Numbers. -->
+        <HlCHex attribute="Hex" context="#stay"/>
+        <HlCOct attribute="Oct" context="#stay"/>
+        <Int attribute="Decimal" context="#stay"/>
+        <Float attribute="Float" context="#stay"/>
+        <!-- Keywords. -->
+        <keyword attribute="Keyword" context="#stay" String="keywords"/>
+        <keyword attribute="Keyword" context="Class" String="class_keywords"/>
+        <keyword attribute="Value Keywords" context="#stay" String="value_keywords"/>
+        <keyword attribute="Reserved" context="#stay" String="reserved"/>
+        <!-- Globals. -->
+        <keyword attribute="Globals" context="#stay" String="globals"/>
+        <keyword attribute="Browser Globals" context="#stay" String="browser_globals"/>
+        <keyword attribute="Node.js Globals" context="#stay" String="nodejs_globals"/>
+        <!-- "this" keyword. -->
+        <RegExpr attribute="Accessor" context="Accessor" String="this\s*\."/>
+        <RegExpr attribute="Accessor" context="#stay" String="this\b"/>
+        <!-- "function" keyword, followed by an optional name and a required params list. -->
+        <RegExpr attribute="Function" context="Function" String="function\b"/>
+        <!-- Class identifiers. -->
+        <RegExpr attribute="Class" context="#stay" String="&path;(?=\s*\.prototype\b)"/>
+        <!-- Closure stuff. -->
+        <RegExpr attribute="Closure Compiler Directives" context="Closure"
+                 String="goog\s*\.\s*(?:base|define|abstractMethod|scope|setTestOnly|provide|require|forwardDeclare|exportSymbol|exportProperty)\b"/>
+        <RegExpr attribute="Closure Compiler Directives" context="Closure Inherits" String="goog\s*\.\s*inherits\s*(?=\()"/>
+        <RegExpr attribute="Closure Namespaces" context="Closure" String="goog\s*\."/>
+        <!-- Comments. -->
+        <RegExpr attribute="Comment" context="JsDoc" String="/\*\*" beginRegion="JsDoc"/>
+        <Detect2Chars attribute="Comment" context="Comment" char="/" char1="/" />
+        <Detect2Chars attribute="Comment" context="Multiline Comment" char="/" char1="*" beginRegion="Comment" />
+        <!-- Strings. -->
+        <DetectChar attribute="String" context="String" char="'"/>
+        <DetectChar attribute="String" context="DQ String" char="&quot;"/>
+        <!-- Regular expressions. -->
+        <!-- TODO: Use in-regex highlighting. -->
+        <RegExpr attribute="Regex" context="#stay" String="/([^/\\\r\n]|\\.)*/[mig]{0,3}"/>
+        <!-- Operators and other non-alphanumeric symbols. -->
+        <AnyChar attribute="Symbol" context="#stay" String="()[]:!%&amp;+,-/*&lt;=&gt;?|~^&#59;" />
+        <DetectChar attribute="Symbol" char="{" beginRegion="Brace" context="#stay" />
+        <DetectChar attribute="Symbol" char="}" endRegion="Brace" context="#stay" />
+        <DetectChar attribute="Symbol" context="Normal After Period" char="."/>
+      </context>
+      <context name="Normal After Period" attribute="Normal" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
+        <DetectSpaces/>
+        <!-- Calls. -->
+        <RegExpr attribute="Function Call" context="#pop" String="&ident;(?=\()"/>
+        <!-- Consts. -->
+        <RegExpr attribute="Const" context="#pop" String="[_A-Z][_A-Z\d]*\b"/>
+        <!-- Generic identifiers. -->
+        <RegExpr attribute="Identifier" context="#pop" String="&ident;"/>
+      </context>
+      <!-- Class names. -->
+      <context name="Class" attribute="Normal" lineEndContext="#stay">
+        <DetectSpaces/>
+        <RegExpr attribute="Class" context="#pop" String="&path;"/>
+      </context>
+      <!-- Accessor. -->
+      <context name="Accessor" attribute="Accessor" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
+        <DetectSpaces/>
+        <RegExpr attribute="Method Accessor" context="#pop" String="&ident;(?=\s*\()"/>
+        <RegExpr attribute="Property Accessor" context="#pop" String="&ident;"/>
+      </context>
+      <!-- Function declaration. -->
+      <context name="Function" attribute="Normal" lineEndContext="#stay">
+        <DetectSpaces/>
+        <DetectChar attribute="Symbol" context="Function Params" char="("/>
+        <RegExpr attribute="Function Name" context="#stay" String="&ident;(?=\s*\()"/>
+      </context>
+      <context name="Function Params" attribute="Normal" lineEndContext="#stay">
+        <DetectSpaces/>
+        <RegExpr attribute="Function Parameter" context="#stay" String="&ident;(?=\s*[,)])"/>
+        <DetectChar attribute="Symbol" context="#stay" char=","/>
+        <DetectChar attribute="Symbol" context="#pop#pop" char=")"/>
+      </context>
+      <!-- JsDoc. -->
+      <context name="JsDoc" attribute="Comment" lineEndContext="#stay">
+        <IncludeRules context="##Alerts" />
+        <IncludeRules context="##Modelines" />
+        <keyword attribute="JsDoc Tag" context="#stay" String="jsdoc_tag_argless"/>
+        <keyword attribute="JsDoc Tag" context="JsDoc Type Start" String="jsdoc_tag_arg"/>
+        <RegExpr attribute="JsDoc Tag" context="JsDoc Param Type Start" String="@param\b"/>
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="JsDoc" />
+      </context>
+      <context name="JsDoc Type Start" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
+        <DetectSpaces/>
+        <DetectChar attribute="Comment" context="JsDoc Type" char="{"/>
+      </context>
+      <context name="JsDoc Type" attribute="Comment" lineEndContext="#stay">
+        <DetectSpaces/>
+        <DetectChar attribute="Comment" context="JsDoc Type" char="{"/>
+        <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
+        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;]"/>
+        <DetectChar attribute="Comment" context="#pop" char="}"/>
+      </context>
+      <context name="JsDoc Param Type Start" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
+        <DetectSpaces/>
+        <DetectChar attribute="Comment" context="JsDoc Param Type" char="{"/>
+      </context>
+      <context name="JsDoc Param Type" attribute="Comment" lineEndContext="#stay">
+        <DetectSpaces/>
+        <DetectChar attribute="Comment" context="JsDoc Param Type" char="{"/>
+        <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
+        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;]"/>
+        <DetectChar attribute="Comment" context="JsDoc Param Name" char="}"/>
+      </context>
+      <context name="JsDoc Param Name" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
+        <DetectSpaces/>
+        <RegExpr attribute="JsDoc Param" context="#pop#pop" String="&ident;"/>
+      </context>
+      <!-- Comments. -->
+      <context name="Comment" attribute="Comment" lineEndContext="#pop">
+        <IncludeRules context="##Alerts" />
+        <IncludeRules context="##Modelines" />
+      </context>
+      <context name="Multiline Comment" attribute="Comment" lineEndContext="#stay">
+        <IncludeRules context="##Alerts" />
+        <IncludeRules context="##Modelines" />
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment" />
+      </context>
+      <!-- Strings. -->
+      <context name="String" attribute="String" lineEndContext="#stay">
+        <HlCStringChar attribute="Char" context="#stay"/>
+        <LineContinue/>
+        <DetectChar attribute="String" context="#pop" char="'"/>
+      </context>
+      <context name="DQ String" attribute="String" lineEndContext="#stay">
+        <HlCStringChar attribute="Char" context="#stay"/>
+        <LineContinue/>
+        <DetectChar attribute="String" context="#pop" char="&quot;"/>
+      </context>
+      <!-- Closure. -->
+      <context name="Closure" attribute="Closure Namespaces" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
+        <DetectSpaces/>
+        <keyword attribute="Closure Namespaces" context="#pop" String="closure_namespaces"/>
+        <keyword attribute="Closure Functions" context="#pop" String="closure_funcs"/>
+      </context>
+      <context name="Closure Inherits" attribute="Closure Namespaces" lineEndContext="#stay">
+        <DetectSpaces/>
+        <DetectChar attribute="Symbol" context="#stay" char="("/>
+        <DetectChar attribute="Symbol" context="#stay" char=","/>
+        <DetectChar attribute="Symbol" context="#pop" char=")"/>
+        <RegExpr attribute="Class" context="#stay" String="&path;"/>
+      </context>
+    </contexts>
+    <!-- Style mappings. -->
+    <itemDatas>
+      <itemData name="Normal" defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Identifier" defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Const" defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Keyword" defStyleNum="dsKeyword" spellChecking="false"/>
+      <itemData name="Function" defStyleNum="dsFunction" spellChecking="false"/>
+      <itemData name="Function Name" defStyleNum="dsFunction" spellChecking="false"/>
+      <itemData name="Function Parameter" defStyleNum="dsFunction" spellChecking="false"/>
+      <itemData name="Function Call" defStyleNum="dsFunction" spellChecking="false"/>
+      <itemData name="Decimal" defStyleNum="dsDecVal" spellChecking="false"/>
+      <itemData name="Float" defStyleNum="dsFloat" spellChecking="false"/>
+      <itemData name="Oct" defStyleNum="dsBaseN" spellChecking="false"/>
+      <itemData name="Hex" defStyleNum="dsBaseN" spellChecking="false"/>
+      <itemData name="Char" defStyleNum="dsChar" spellChecking="false"/>
+      <itemData name="String" defStyleNum="dsString" spellChecking="false"/>
+      <itemData name="Comment" defStyleNum="dsComment" spellChecking="true"/>
+      <itemData name="JsDoc Tag" defStyleNum="dsKeyword" spellChecking="false"/>
+      <itemData name="JsDoc Type" defStyleNum="dsDataType" spellChecking="false"/>
+      <itemData name="JsDoc Type Nullability" defStyleNum="dsDataType" spellChecking="false"/>
+      <itemData name="JsDoc Param" defStyleNum="dsFunction" spellChecking="false"/>
+      <itemData name="Symbol" defStyleNum="dsKeyword" spellChecking="false"/>
+      <itemData name="Method Accessor" defStyleNum="dsDataType" spellChecking="false"/>
+      <itemData name="Property Accessor" defStyleNum="dsDataType" spellChecking="false"/>
+      <itemData name="Accessor" defStyleNum="dsDataType" spellChecking="false"/>
+      <itemData name="Class" defStyleNum="dsDataType" spellChecking="false" bold="1"/>
+      <itemData name="Regex" defStyleNum="dsString" spellChecking="false"/>
+      <itemData name="Reserved" defStyleNum="dsAlert" spellChecking="false"/>
+      <itemData name="Value Keywords" defStyleNum="dsOthers" spellChecking="false"/>
+      <itemData name="Globals" defStyleNum="dsOthers" spellChecking="false"/>
+      <!-- Context-sensitive globals - not styled by default. -->
+      <itemData name="Browser Globals" defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Node.js Globals" defStyleNum="dsNormal" spellChecking="false"/>
+      <!-- Closure stuff - not styled by default. -->
+      <itemData name="Closure Compiler Directives" defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Closure Namespaces" defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Closure Functions" defStyleNum="dsNormal" spellChecking="false"/>
+    </itemDatas>
+  </highlighting>
+  <!-- Global settings. -->
+  <general>
+    <comments>
+      <comment name="singleLine" start="//" />
+      <comment name="multiLine" start="/*" end="*/" />
+    </comments>
+    <keywords casesensitive="1" />
+  </general>
+</language>
