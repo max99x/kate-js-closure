@@ -184,6 +184,7 @@
       <item>@enum</item>
       <item>@extends</item>
       <item>@implements</item>
+      <item>@package</item>
       <item>@private</item>
       <item>@protected</item>
       <item>@public</item>
