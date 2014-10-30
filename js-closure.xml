@@ -152,8 +152,9 @@
     </list>
     <!-- JsDoc tags with no arguments or non-type arguments. -->
     <list name="jsdoc_tag_argless">
-      <item>@code</item>
       <item>@author</item>
+      <item>@bug</item>
+      <item>@code</item>
       <item>@constructor</item>
       <item>@deprecated</item>
       <item>@dict</item>
