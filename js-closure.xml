@@ -283,7 +283,6 @@
         <DetectChar attribute="Symbol" context="#pop#pop" char=")"/>
       </context>
       <!-- JsDoc. -->
-      <!-- TODO: Factor out the duplicate rules here. -->
       <context name="JsDoc" attribute="Comment" lineEndContext="#stay">
         <IncludeRules context="##Alerts" />
         <IncludeRules context="##Modelines" />
@@ -291,54 +290,47 @@
         <keyword attribute="JsDoc Tag" context="JsDoc Type Start" String="jsdoc_tag_arg"/>
         <RegExpr attribute="JsDoc Tag" context="JsDoc Param Type Start" String="@param\b"/>
         <RegExpr attribute="JsDoc Unknown Tag" context="#stay" String="@\w+"/>
-        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="Comment" />
+        <Detect2Chars attribute="Comment" context="#pop" char="*" char1="/" endRegion="JsDoc" />
+      </context>
+      <context name="JsDoc Margin" attribute="Comment" lineEndContext="#stay">
+        <RegExpr attribute="Comment" context="#stay" String="^ +\* "/>
+        <DetectSpaces/>
       </context>
       <context name="JsDoc Type Start" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
-        <DetectSpaces/>
         <DetectChar attribute="Comment" context="JsDoc Type" char="{"/>
+        <IncludeRules context="JsDoc Margin" />
       </context>
       <context name="JsDoc Type" attribute="Comment" lineEndContext="#stay">
-        <RegExpr attribute="Comment" context="#stay" String="^ +\* "/>
-        <DetectSpaces/>
         <DetectChar attribute="JsDoc Type" context="JsDoc Type Object" char="{"/>
-        <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
-        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;*|(),]"/>
         <DetectChar attribute="Comment" context="#pop" char="}"/>
+        <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
+        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;*|():,]"/>
+        <IncludeRules context="JsDoc Margin" />
       </context>
       <context name="JsDoc Type Object" attribute="Comment" lineEndContext="#stay">
-        <RegExpr attribute="Comment" context="#stay" String="^ +\* "/>
-        <DetectSpaces/>
-        <DetectChar attribute="JsDoc Type" context="JsDoc Type Object" char="{"/>
         <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
         <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;*|():,'&quot;]"/>
         <DetectChar attribute="JsDoc Type" context="#pop" char="}"/>
+        <DetectChar attribute="JsDoc Type" context="JsDoc Type Object" char="{"/>
+        <IncludeRules context="JsDoc Margin" />
       </context>
 
       <context name="JsDoc Param Type Start" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
-        <RegExpr attribute="Comment" context="#stay" String="^ +\* "/>
-        <DetectSpaces/>
         <DetectChar attribute="Comment" context="JsDoc Param Type" char="{"/>
+        <IncludeRules context="JsDoc Type Start" />
       </context>
       <context name="JsDoc Param Type" attribute="Comment" lineEndContext="#stay">
-        <RegExpr attribute="Comment" context="#stay" String="^ +\* "/>
-        <DetectSpaces/>
         <DetectChar attribute="JsDoc Type" context="JsDoc Param Type Object" char="{"/>
-        <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
-        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;*|(),]"/>
         <DetectChar attribute="Comment" context="JsDoc Param Name" char="}"/>
+        <IncludeRules context="JsDoc Type" />
       </context>
       <context name="JsDoc Param Type Object" attribute="Comment" lineEndContext="#stay">
-        <RegExpr attribute="Comment" context="#stay" String="^ +\* "/>
-        <DetectSpaces/>
         <DetectChar attribute="JsDoc Type" context="JsDoc Param Type Object" char="{"/>
-        <RegExpr attribute="JsDoc Type Nullability" context="#stay" String="[?!=]"/>
-        <RegExpr attribute="JsDoc Type" context="#stay" String="&path;|[.&lt;&gt;*|():,'&quot;]"/>
-        <DetectChar attribute="JsDoc Type" context="#pop" char="}"/>
+        <IncludeRules context="JsDoc Type Object" />
       </context>
       <context name="JsDoc Param Name" attribute="Comment" lineEndContext="#stay" fallthroughContext="#pop" fallthrough="true">
-        <RegExpr attribute="Comment" context="#stay" String="^ +\* "/>
-        <DetectSpaces/>
         <RegExpr attribute="JsDoc Param" context="#pop#pop" String="&ident;"/>
+        <IncludeRules context="JsDoc Margin" />
       </context>
       <!-- Comments. -->
       <context name="Comment" attribute="Comment" lineEndContext="#pop">
